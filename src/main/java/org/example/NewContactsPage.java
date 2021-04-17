@@ -14,8 +14,8 @@ public class NewContactsPage extends BasePage {
     private WebElement lastName = driver.findElement(By.xpath("//input[contains(@id, 'lastName')]"));
     private WebElement firstName = driver.findElement(By.xpath("//input[contains(@id, 'firstName')]"));
     private WebElement orgClick = driver.findElement(By.xpath(".//span[text()='Укажите организацию']"));
-    private WebElement orgInput = driver.findElement(By.xpath(".//div[@id='select2-drop']/div/input"));
-    private WebElement orgNameClick = driver.findElement(By.xpath("//.//span[text()='1234']"));
+    private WebElement orgInput = driver.findElement(By.xpath("//input[@class='select2-input']"));
+   // private WebElement orgNameClick = driver.findElement(By.xpath(".//span[text()='1234']"));
     private WebElement jobTitle = driver.findElement(By.xpath("//input[contains(@id, 'jobTitle')]"));
     private WebElement btnSuccess = driver.findElement(By.xpath("//button[@class='btn btn-success action-button']"));
 
@@ -40,6 +40,7 @@ public class NewContactsPage extends BasePage {
     }
 
     public NewContactsPage clickOrgName() {
+        WebElement orgNameClick = driver.findElement(By.xpath(".//span[text()='1234']"));
         orgNameClick.click();
         return this;
     }

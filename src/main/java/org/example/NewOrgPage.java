@@ -11,9 +11,9 @@ public class NewOrgPage extends BasePage {
         super(driver);
     }
 
+    private WebElement orgName = driver.findElement(By.xpath("//input[contains(@id,'crm_project_name')]"));
     private WebElement orgClick = driver.findElement(By.xpath(".//span[text()='Укажите организацию']"));
-    private WebElement orgInput = driver.findElement(By.xpath(".//div[@id='select2-drop']/div/input"));
-    private WebElement orgNameClick = driver.findElement(By.xpath("//.//span[text()='1234']"));
+    private WebElement orgInput = driver.findElement(By.xpath("//input[@class='select2-input'][1]"));
     private WebElement division = driver.findElement(By.name("crm_project[businessUnit]"));
     private WebElement curator = driver.findElement(By.name("crm_project[curator]"));
     private WebElement leader = driver.findElement(By.name("crm_project[rp]"));
@@ -23,6 +23,11 @@ public class NewOrgPage extends BasePage {
     private WebElement contactInput = driver.findElement(By.xpath("//div[contains(@id, 'contactMain')]"));
     private WebElement contactNameClick = driver.findElement(By.xpath("//div[contains(@id, 'contactMain')]"));
     private WebElement btnSuccess = driver.findElement(By.xpath(".//button[@class='btn btn-success action-button']"));
+
+    public NewOrgPage inputOrgName(String inputName) {
+        orgName.sendKeys(inputName);
+        return this;
+    }
 
     public NewOrgPage clickOrg() {
         orgClick.click();
@@ -35,41 +40,42 @@ public class NewOrgPage extends BasePage {
     }
 
     public NewOrgPage clickOrgName() {
+        WebElement orgNameClick = driver.findElement(By.xpath("//.//span[text()='1234']"));
         orgNameClick.click();
         return this;
     }
 
     public NewOrgPage selectDivision (String selectDivision) {
         Select select = new Select(division);
-        select.deselectByVisibleText(selectDivision);
+        select.selectByVisibleText(selectDivision);
         return this;
     }
 
     public NewOrgPage selectLeader (String selectLeader) {
         Select select = new Select(leader);
-        select.deselectByVisibleText(selectLeader);
+        select.selectByVisibleText(selectLeader);
         return this;
     }
 
     public NewOrgPage selectAdmin (String selectAdmin) {
         Select select = new Select(admin);
-        select.deselectByVisibleText(selectAdmin);
+        select.selectByVisibleText(selectAdmin);
         return this;
     }
 
     public NewOrgPage selectManager (String selectManager) {
         Select select = new Select(manager);
-        select.deselectByVisibleText(selectManager);
+        select.selectByVisibleText(selectManager);
         return this;
     }
 
     public NewOrgPage selectCurator (String selectCurator) {
         Select select = new Select(curator);
-        select.deselectByVisibleText(selectCurator);
+        select.selectByVisibleText(selectCurator);
         return this;
     }
 
-    public NewOrgPage clickContact() {
+/*    public NewOrgPage clickContact() {
         contactClick.click();
         return this;
     }
@@ -82,7 +88,7 @@ public class NewOrgPage extends BasePage {
     public NewOrgPage clickContactName() {
         contactNameClick.click();
         return this;
-    }
+    }*/
 
     public AllOrgPage clickCreate() {
         btnSuccess.click();

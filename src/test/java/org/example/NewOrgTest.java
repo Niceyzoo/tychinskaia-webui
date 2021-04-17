@@ -11,9 +11,10 @@ public class NewOrgTest extends BaseTest {
     @Test
     public void NewOrgTest () {
         new LoginPage(driver)
-                .Login(STUDENT_LOGIN, STUDENT_PASSWORD)
+               .Login(STUDENT_LOGIN, STUDENT_PASSWORD)
                 .redirectToAllOrgPage()
                 .clickToNewOrg()
+                .inputOrgName("00kkjhgj")
                 .clickOrg()
                 .inputOrg("1234")
                 .clickOrgName()
@@ -22,10 +23,11 @@ public class NewOrgTest extends BaseTest {
                 .selectLeader("Applanatest Applanatest Applanatest")
                 .selectAdmin("Амелина Светлана")
                 .selectManager("Applanatest Applanatest Applanatest")
-                .clickContact()
+                /*.clickContact()
                 .inputContact("123 123")
-                .clickContactName()
+                .clickContactName()*/
                 .clickCreate()
                 .checkNewOrgPopUp();
+
     }
 }

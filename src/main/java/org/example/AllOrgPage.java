@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class AllOrgPage extends BasePage {
     public AllOrgPage(WebDriver driver) {
         super(driver);
@@ -20,7 +23,9 @@ public class AllOrgPage extends BasePage {
     }
 
     public AllOrgPage checkNewOrgPopUp() {
-        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='extra-actions-panel']")).isDisplayed());
+        String message = wait10second.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
+                "div[class='message']"))).getText();
+        assertTrue(message.contains("Проект сохранен"));
         return this;
     }
 

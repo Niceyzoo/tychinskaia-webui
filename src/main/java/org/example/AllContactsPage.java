@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AllContactsPage extends BasePage {
     public AllContactsPage(WebDriver driver) {
@@ -19,7 +22,9 @@ public class AllContactsPage extends BasePage {
     }
 
     public AllContactsPage checkNewContactPopUp() {
-        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='extra-actions-panel']")).isDisplayed());
+        String message = wait10second.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
+                "div[class='message']"))).getText();
+        assertTrue(message.contains("Контактное лицо сохранено"));
         return this;
     }
 }
