@@ -1,5 +1,6 @@
 package org.example;
 
+import io.qameta.allure.Step;
 import org.example.base.BasePage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -17,11 +18,13 @@ public class AllOrgPage extends BasePage {
 
     private WebElement createNewOrg = driver.findElement(By.xpath(".//div[@class='pull-left btn-group icons-holder']//a[text()='Создать проект']"));
 
+    @Step("click on button to create new project")
     public NewOrgPage clickToNewOrg () {
         createNewOrg.click();
         return new NewOrgPage (driver);
     }
 
+    @Step("assert that new project is create")
     public AllOrgPage checkNewOrgPopUp() {
         String message = wait10second.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(
                 "div[class='message']"))).getText();

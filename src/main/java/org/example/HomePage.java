@@ -1,14 +1,16 @@
 package org.example;
 
+import io.qameta.allure.Step;
 import org.example.base.BasePage;
 import org.example.utils.Action;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import javax.swing.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomePage extends BasePage {
 
@@ -23,20 +25,29 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("redirect to page all contacts")
     public AllContactsPage redirectToAllContactsPage() {
         Action.moveCursorToNavigationTab(contractor, driver);
         contact.click();
         return new AllContactsPage(driver);
     }
 
+    @Step("redirect to page all projects")
     public AllOrgPage redirectToAllOrgPage() {
         Action.moveCursorToNavigationTab(project, driver);
         myProject.click();
         return new AllOrgPage(driver);
     }
 
-    public void checkUrl(String url) {
+    @Step("assert that current url equals {url}")
+    public HomePage checkUrl(String url) {
+        wait10second.until(ExpectedConditions.urlToBe(url));
         assertEquals(driver.getCurrentUrl(), url);
+        return this;
+
+
+          //  assertEquals(driver.getCurrentUrl(), url);
+
     }
 }
 

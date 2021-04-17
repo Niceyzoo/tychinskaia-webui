@@ -1,5 +1,6 @@
 package org.example;
 
+import io.qameta.allure.Step;
 import org.example.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,10 +17,21 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public HomePage Login (String login, String password) {
+    @Step(value = "Enter login {login}")
+    public LoginPage Login (String login) {
         inputLogin.sendKeys(login);
+        return this;
+    }
+
+    @Step(value = "Enter Password {password}")
+    public LoginPage Password (String password) {
         inputPassword.sendKeys(password);
-        submitButton.click();
+        return this;
+    }
+
+     @Step("Click Enter Button")
+             public HomePage EnterButton () {
+         submitButton.click();
         return new HomePage(driver);
     }
 }

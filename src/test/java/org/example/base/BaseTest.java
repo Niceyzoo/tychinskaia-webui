@@ -8,7 +8,11 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.example.common.Configuration.BASE_URL;
@@ -36,9 +40,35 @@ import static org.example.common.Configuration.LOGIN_PATH;
             driver.get(BASE_URL + LOGIN_PATH);
         }
 
+
         @AfterEach
         public void tearDown() {
+            // Вывод всех ошибок браузера после каждого теста
+            LogEntries browserLogs = driver.manage().logs().get("browser");
+            List<LogEntry> allLogRows = browserLogs.getAll();
+
+            if (allLogRows.size() > 0 ) {
+                // Обработка ситуации
+            }
+
+            // -------------------------------
             driver.quit();
         }
+
+
+       /* @AfterEach
+        public void tearDown() {
+            // Вывод всех ошибок браузера после каждого теста
+            driver
+                    .manage()
+                    .logs()
+                    .get(LogType.BROWSER)
+                    .getAll()
+                    .forEach(System.out::println);
+
+            // -------------------------------
+            driver.quit();
+        }*/
+
     }
 
