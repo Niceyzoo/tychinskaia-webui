@@ -71,6 +71,7 @@
             <version>${slf4j-simple.version}</version>
         </dependency>
 
+
     </dependencies>
 
     <build>
@@ -87,6 +88,8 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -105,8 +108,10 @@
                     <reportVersion>${reportVersion.version}</reportVersion>
                     <resultsDirectory>allure-results</resultsDirectory>
                 </configuration>
+
             </plugin>
         </plugins>
 
     </build>
+
 </project>

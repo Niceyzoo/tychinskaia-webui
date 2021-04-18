@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.example.common.Configuration.STUDENT_LOGIN;
 import static org.example.common.Configuration.STUDENT_PASSWORD;
 import static org.example.common.Configuration.BASE_URL;
+
 import org.example.LoginPage;
 
 @Feature("Login")
@@ -19,9 +20,5 @@ public class LoginTest extends BaseTest {
                 .Password(STUDENT_PASSWORD)
                 .EnterButton()
                 .checkUrl(BASE_URL);
-
-      //  tearDown();
-
-
     }
 }

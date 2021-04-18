@@ -19,7 +19,7 @@ public class NewOrgTest extends BaseTest {
                 .EnterButton()
                 .redirectToAllOrgPage()
                 .clickToNewOrg()
-                .inputOrgName("00kkjhgj1")
+                .inputOrgName("00kkjhgj12")
                 .clickOrg()
                 .inputOrg("1234")
                 .clickOrgName()
